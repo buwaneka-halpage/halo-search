@@ -15,6 +15,9 @@ MainActor.assumeIsolated {
         app.run()
     }
     let delegate = AppDelegate()
+    if let index = arguments.firstIndex(of: "--demo"), index + 2 < arguments.count {
+        delegate.demo = DemoDirector(layoutPath: arguments[index + 1], logPath: arguments[index + 2])
+    }
     app.delegate = delegate
     app.setActivationPolicy(.accessory)
     app.run()

@@ -12,7 +12,8 @@
 </div>
 
 <p align="center">
-  <img src="docs/images/overlay-circle.png" width="720" alt="A circled photo of the Eiffel Tower with the rest of the screen dimmed">
+  <a href="https://github.com/buwaneka-halpage/halo-search/releases/download/v0.1.0/halo-search-demo.mp4"><img src="docs/images/overlay-circle.png" width="720" alt="A circled photo of the Eiffel Tower with the rest of the screen dimmed"></a><br>
+  <a href="https://github.com/buwaneka-halpage/halo-search/releases/download/v0.1.0/halo-search-demo.mp4"><strong>▶ Watch the 50-second demo</strong></a>
 </p>
 
 ## Features

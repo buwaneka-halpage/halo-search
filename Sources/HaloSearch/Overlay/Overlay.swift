@@ -37,7 +37,7 @@ final class OverlayController {
     let screen: NSScreen
     let image: CGImage
     private let window: OverlayPanel
-    private let view: OverlayView
+    let view: OverlayView
 
     var onRegion: ((CGRect) -> Void)?
     var onText: ((String) -> Void)?

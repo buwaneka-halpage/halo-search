@@ -3,3 +3,6 @@ build/
 .swiftpm/
 .DS_Store
 *.xcodeproj/xcuserdata/
+demo/video/node_modules/
+demo/video/out/
+demo/video/public/footage.mp4

@@ -7,11 +7,14 @@ import UniformTypeIdentifiers
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
     private var hotKey: HotKey?
-    private var overlay: OverlayController?
-    private var results: ResultsController!
+    // Internal rather than private so the demo director can drive a session.
+    private(set) var overlay: OverlayController?
+    private(set) var results: ResultsController!
     private var starting = false
     private var keyMonitor: Any?
     private let menu = NSMenu()
+    /// Set by `--demo`: run a scripted session instead of waiting for the shortcut.
+    var demo: DemoDirector?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         results = ResultsController()
@@ -23,6 +26,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         results.model.onFirstResult = { [weak self] in self?.overlay?.setLoading(false) }
 
         setUpStatusItem()
+        if let demo {
+            demo.run(self)
+            return
+        }
         registerHotKey()
 
         if !ScreenCapturer.hasPermission {
@@ -40,7 +47,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if overlay != nil || results.isVisible { dismiss() } else { begin() }
     }
 
-    private func begin() {
+    func begin() {
         guard !starting else { return }
         guard ScreenCapturer.hasPermission else {
             showPermissionAlert()
@@ -80,7 +87,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         installKeyMonitor()
     }
 
-    private func dismiss(hideApp: Bool = true) {
+    func dismiss(hideApp: Bool = true) {
         overlay?.close()
         overlay = nil
         results.hide()

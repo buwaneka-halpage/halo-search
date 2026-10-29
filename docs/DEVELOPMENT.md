@@ -55,6 +55,15 @@ Draws the overlay over a screenshot, replays a circle and a scribble with synthe
 each state. It needs no Screen Recording permission, so it is handy for checking overlay changes from a terminal or
 CI. The images in `docs/images` were made this way.
 
+### Demo mode
+
+```sh
+.build/release/HaloSearch --demo layout.json log.json
+```
+
+Plays the scripted session used for the demo video against the real app and Google. See
+[demo/README.md](../demo/README.md) for the full recording and editing workflow.
+
 ## Code style
 
 - Match the surrounding code: small types, `// MARK:` sections, comments that explain *why* rather than *what*.

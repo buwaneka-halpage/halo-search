@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an idea
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do?
+      description: Describe the situation and what's missing, rather than a specific solution.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Ideas for how it could work
+  - type: checkboxes
+    id: roadmap
+    attributes:
+      label: Checks
+      options:
+        - label: I looked at docs/ROADMAP.md and the open issues for something similar.
+          required: true

@@ -1,0 +1,43 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Shortcut or overlay
+        - Image search / AI Mode
+        - Text search
+        - Results panel
+        - Install or permissions
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "macOS 26.1"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Halo Search version
+      description: The release you downloaded, or Finder → Get Info on Halo Search.app.
+      placeholder: "0.1.0"
+  - type: textarea
+    id: selftest
+    attributes:
+      label: Self-test output
+      description: If searches stopped working, run `HaloSearch --selftest <photo>` (see docs/DEVELOPMENT.md) and paste the output.
+      render: text

@@ -12,8 +12,8 @@
 </div>
 
 <p align="center">
-  <a href="https://github.com/buwaneka-halpage/halo-search/releases/download/v0.1.0/halo-search-demo.mp4"><img src="docs/images/overlay-circle.png" width="720" alt="A circled photo of the Eiffel Tower with the rest of the screen dimmed"></a><br>
-  <a href="https://github.com/buwaneka-halpage/halo-search/releases/download/v0.1.0/halo-search-demo.mp4"><strong>▶ Watch the 50-second demo</strong></a>
+  <a href="https://buwaneka-halpage.github.io/halo-search/"><img src="docs/images/demo-preview.webp" width="760" alt="Pressing the shortcut, circling a photo of the Eiffel Tower, and AI Mode explaining it"></a><br>
+  <a href="https://buwaneka-halpage.github.io/halo-search/"><strong>▶ Watch the full 50-second demo</strong></a>
 </p>
 
 ## Features

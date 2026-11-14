@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halo Search</title>
+<meta name="description" content="Circle anything on your Mac's screen and ask Google about it. Free and open source for macOS 14 and later.">
+<meta property="og:title" content="Halo Search">
+<meta property="og:description" content="Circle anything on your Mac's screen and ask Google about it.">
+<meta property="og:image" content="https://buwaneka-halpage.github.io/halo-search/poster.jpg">
+<meta property="og:video" content="https://buwaneka-halpage.github.io/halo-search/halo-search-demo.mp4">
+<link rel="icon" href="icon.png">
+<style>
+  :root {
+    --bg: #07070d;
+    --text: #ffffff;
+    --muted: rgba(255, 255, 255, 0.68);
+    --line: rgba(255, 255, 255, 0.14);
+    --halo: conic-gradient(from 0deg, #4285f4, #ea4335, #fbbc05, #34a853, #4285f4);
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+  .glow i { position: absolute; width: 640px; height: 640px; border-radius: 50%; filter: blur(140px); opacity: .2; }
+  .glow i:nth-child(1) { background: #4285f4; left: -120px; top: -80px; }
+  .glow i:nth-child(2) { background: #ea4335; right: -160px; top: 0; }
+  .glow i:nth-child(3) { background: #fbbc05; right: 0; bottom: -200px; }
+  .glow i:nth-child(4) { background: #34a853; left: -100px; bottom: -220px; }
+
+  main { max-width: 1120px; margin: 0 auto; padding: 64px 16px 48px; text-align: center; }
+  .logo { position: relative; width: 116px; height: 116px; margin: 0 auto 22px; display: grid; place-items: center; }
+  .logo::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--halo);
+    -webkit-mask: radial-gradient(circle, transparent 60%, #000 62%, #000 68%, transparent 71%);
+            mask: radial-gradient(circle, transparent 60%, #000 62%, #000 68%, transparent 71%);
+    animation: spin 8s linear infinite;
+  }
+  .logo img { width: 70px; height: 70px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .logo::before { animation: none; } }
+
+  h1 { font-size: clamp(40px, 7vw, 68px); font-weight: 700; letter-spacing: -0.03em; }
+  .tagline { margin-top: 12px; font-size: clamp(18px, 2.4vw, 23px); color: var(--muted); }
+
+  .player {
+    margin: 40px auto 0; border-radius: 18px; overflow: hidden; background: #000;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, .6), 0 0 0 1px var(--line);
+  }
+  video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+  .actions { margin-top: 34px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .button {
+    display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px;
+    font-size: 16px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); color: var(--text);
+  }
+  .button.primary { background: var(--text); color: #111; border-color: var(--text); }
+  .button:focus-visible { outline: 3px solid #4285f4; outline-offset: 3px; }
+  .fine { margin-top: 18px; font-size: 14px; color: var(--muted); }
+
+  .features { margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; text-align: left; }
+  .feature { padding: 22px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255, 255, 255, .05); }
+  .feature b { display: flex; align-items: center; gap: 10px; font-size: 17px; }
+  .feature b::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--dot); box-shadow: 0 0 14px var(--dot); }
+  .feature p { margin-top: 8px; color: var(--muted); font-size: 15px; line-height: 1.5; }
+
+  footer { margin-top: 56px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <main>
+    <div class="logo"><img src="icon.png" alt=""></div>
+    <h1>Halo Search</h1>
+    <p class="tagline">Circle anything on your Mac. Ask Google about it.</p>
+
+    <div class="player">
+      <video src="halo-search-demo.mp4" poster="poster.jpg" controls playsinline preload="metadata"
+             aria-label="Demo of Halo Search: circling a photo, reading the AI Mode answer, asking a follow-up and searching text"></video>
+    </div>
+
+    <div class="actions">
+      <a class="button primary" href="https://github.com/buwaneka-halpage/halo-search/releases/latest">Download for macOS</a>
+      <a class="button" href="https://github.com/buwaneka-halpage/halo-search">View on GitHub</a>
+    </div>
+    <p class="fine">Free and open source · macOS 14 and later · MIT License</p>
+
+    <section class="features" aria-label="Features">
+      <div class="feature" style="--dot:#4285f4"><b>AI Mode + Lens</b><p>Circle something and get an answer about it, with visual matches beside it.</p></div>
+      <div class="feature" style="--dot:#ea4335"><b>Reads any text</b><p>Scribble over words on screen to search exactly that text, recognised on-device.</p></div>
+      <div class="feature" style="--dot:#fbbc05"><b>Native &amp; light</b><p>Swift and AppKit, living in your menu bar behind one shortcut.</p></div>
+      <div class="feature" style="--dot:#34a853"><b>Private by default</b><p>Nothing leaves your Mac until you make a selection.</p></div>
+    </section>
+
+    <footer>
+      Halo Search is not affiliated with Google. Google, Google Lens and AI Mode are trademarks of Google LLC.<br>
+      Demo photo of the Eiffel Tower by Benh LIEU SONG, public domain.
+    </footer>
+  </main>
+</body>
+</html>
